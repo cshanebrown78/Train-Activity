@@ -13,58 +13,61 @@
     <!-- Firebase link -->
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+    <!-- Moment.js link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 </head>
 <body>
     <div class="container">
 
-        <div class="jumbotron jumbotron-fluid">
+        <div class="jumbotron jumbotron-fluid train-title">
             <div class="container">
-                <h1>Fluid Jumbotron</h1>
-                <p class="lead">This is a modified jumbotron that occupies the entire horizon</p>
+                <h1>Trains</h1>
+                <p class="lead">Where are you going and when can we send you</p>
             </div>
         </div>
 
-        <div class="card">
+        <div class="card train-info">
             <div class="card-header">
-              Current Employee
+                Current Train Schedule
             </div>
             <div class="card-body">
                 <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>Start Date</th>
-                        <th>Months Worked</th>
-                        <th>Monthly Rate</th>
-                        <th>Total Billed</th>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>Train Name</th>
+                            <th>Destination</th>
+                            <th>Frequency (min)</th>
+                            <th>Next Arrival</th>
+                            <th>Minutes Away</th>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
 
         <div class="card">
             <div class="card-header">
-                Add Employee
+                Add Train
             </div>
             <div class="card-body">
                 <form>
                     <div class="form-group">
-                      <label for="employeeName">Employee Name</label>
-                      <input type="text" class="form-control" id="employeeName">
+                      <label for="trainName">Train Name</label>
+                      <input type="text" class="form-control" id="trainName">
                     </div>
                     <div class="form-group">
-                      <label for="employeeRole">Role</label>
-                      <input type="text" class="form-control" id="employeeRole">
+                      <label for="tDestination">Destination</label>
+                      <input type="text" class="form-control" id="tDestination">
                     </div>
                     <div class="form-group">
-                        <label for="startDate">Start Date (MM/DD/YYYY)</label>
-                        <input type="date" class="form-control" id="startDate">
+                        <label for="firstTrain">First Train Time (HH:mm-military time)</label>
+                        <input type="text" class="form-control" id="firstTrain" name="limittime" list="limittimeslist" step="1">
                     </div>
                     <div class="form-group">
-                        <label for="monthlyRate">Monthly Rate</label>
-                        <input type="text" class="form-control" id="monthlyRate">
+                        <label for="tFreq">Frequency (min)</label>
+                        <input type="number" class="form-control" id="tFreq">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary new-train-btn">Submit</button>
                 </form>
             </div>
         </div>
