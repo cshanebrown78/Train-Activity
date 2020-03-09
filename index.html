@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Schedule</title>
+    <!-- Bootstrap link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- CSS link -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- jQuery link -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Firebase link -->
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1>Fluid Jumbotron</h1>
+                <p class="lead">This is a modified jumbotron that occupies the entire horizon</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+              Current Employee
+            </div>
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Start Date</th>
+                        <th>Months Worked</th>
+                        <th>Monthly Rate</th>
+                        <th>Total Billed</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Add Employee
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                      <label for="employeeName">Employee Name</label>
+                      <input type="text" class="form-control" id="employeeName">
+                    </div>
+                    <div class="form-group">
+                      <label for="employeeRole">Role</label>
+                      <input type="text" class="form-control" id="employeeRole">
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Start Date (MM/DD/YYYY)</label>
+                        <input type="date" class="form-control" id="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="monthlyRate">Monthly Rate</label>
+                        <input type="text" class="form-control" id="monthlyRate">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Javascript link -->
+    <script src="assets/javascript/app.js"></script>
+</body>
+</html>
