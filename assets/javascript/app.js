@@ -23,7 +23,7 @@ $(".new-train-btn").on("click", function(event) {
   //Pulls the input from the form 
   var trainName = $("#trainName").val().trim();
   var trainDestination = $("#tDestination").val().trim();
-  var initialTrain = moment($("#firstTrain").val().trim(),"HH:mm").format("HH:mm");
+  var initialTrain = $("#firstTrain").val().trim();
   var trainFreq = $("#tFreq").val().trim(); 
 
   
@@ -31,16 +31,18 @@ $(".new-train-btn").on("click", function(event) {
       name: trainName,
       role: trainDestination,
       firstTrain: initialTrain,
-      frequency: trainFreq
+      frequency: trainFreq,
+      dateAdded: firebase.database.ServerValue.TIMESTAMP
   };
 
   // Pushes the information to the database  
   database.ref().push(newTrain);
 
-  console.log(newTrain.name);
-  console.log(newTrain.role);
-  console.log(newTrain.firstTrain);
-  console.log(newTrain.frequency);
+
+//   console.log(newTrain.name);
+//   console.log(newTrain.role);
+//   console.log(newTrain.firstTrain);
+//   console.log(newTrain.frequency);
 
 $("#trainName").val("");
 $("#tDestination").val("");
@@ -56,14 +58,43 @@ database.ref().on("child_added", function(childSnapshot){
     var trainDestination = childSnapshot.val().role;
     var initialTrain = childSnapshot.val().firstTrain;
     var trainFreq = childSnapshot.val().frequency;
-    var nextArrival = "1:00 PM";
-    var minsAway = 22;
+    // var nextArrival = "";
+    // var minsAway = 0;
 
-    console.log(trainName);
-    console.log(trainDestination);
-    console.log(initialTrain);
-    console.log(trainFreq);
+    // console.log(trainName);
+    // console.log(trainDestination);
+    console.log("Initial Train " + initialTrain);
+    // console.log(trainFreq);
 
+    var initialTimeConverted = moment(initialTrain, "HH:mm").subtract(1, "years");
+    console.log("initial converted " + initialTimeConverted);
+
+
+    var currentTime = moment();
+    console.log("Current time: " + currentTime);
+
+
+    var timeDiff = moment().diff(moment(initialTimeConverted),"minutes");
+    console.log("Time difference: " + timeDiff);
+
+
+    timeModulus = timeDiff % trainFreq;
+    console.log("Time Modulus: " + timeModulus);
+
+
+    var minsAway = trainFreq - timeModulus;
+    console.log("Minutes away: " + minsAway);
+
+
+    var incomingTrain = moment().add(minsAway, "minutes");
+    var nextArrival = moment(incomingTrain).format("hh:mm A");
+    console.log(nextArrival);
+
+
+    // var convertedInitial = moment.unix(initialTrain).format("hh:mm A");
+    // console.log(convertedInitial);
+
+// Appends new trains to table in HTML
 $("tbody").append(`
     <tr>
         <td>${trainName}</td>
