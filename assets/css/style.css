@@ -5,3 +5,7 @@ table {
 .train-info {
     margin-bottom: 10px;
 }
+
+td {
+    border-top: solid rgb(212, 210, 210) 1px;
+}
