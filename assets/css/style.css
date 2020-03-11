@@ -1,3 +1,22 @@
+body {
+    background: rgb(212, 210, 210);
+}
+
+.train-title h1, p {
+    text-align: center;
+    font-family: 'Rye', cursive;
+    color: #FFFFFF;
+}
+
+.train-title h1 {
+    font-size: 42px;
+}
+
+.jumbotron {
+    padding: 32px;
+    background: #002145;
+}
+
 table {
     width: 100%;
 }
@@ -8,4 +27,21 @@ table {
 
 td {
     border-top: solid rgb(212, 210, 210) 1px;
+}
+
+.card-header {
+    background: #002145;
+    color: white;
+    font-size: 18px;
+    text-shadow: -1px 0 silver, 0 1px silver, 1px 0 silver, 0 -1px silver;
+}
+
+.card-body {
+    background: gray;
+    color: #FFFFFF;
+}
+
+.new-train-btn {
+    background: #002145;
+    border: solid 1px silver;
 }
