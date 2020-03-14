@@ -26,7 +26,7 @@ $(".new-train-btn").on("click", function(event) {
   var initialTrain = $("#firstTrain").val().trim();
   var trainFreq = $("#tFreq").val().trim(); 
 
-  
+  //Puts the form information variables into variables stored in firebase
   var newTrain = {
       name: trainName,
       role: trainDestination,
@@ -39,11 +39,7 @@ $(".new-train-btn").on("click", function(event) {
   database.ref().push(newTrain);
 
 
-//   console.log(newTrain.name);
-//   console.log(newTrain.role);
-//   console.log(newTrain.firstTrain);
-//   console.log(newTrain.frequency);
-
+// Empties the form data fields
 $("#trainName").val("");
 $("#tDestination").val("");
 $("#firstTrain").val("");
@@ -52,47 +48,30 @@ $("#tFreq").val("");
 });
 
 database.ref().on("child_added", function(childSnapshot){
-    console.log(childSnapshot.val());
-
+    
+    // Sets the latest child added to the variables
     var trainName = childSnapshot.val().name;
     var trainDestination = childSnapshot.val().role;
     var initialTrain = childSnapshot.val().firstTrain;
     var trainFreq = childSnapshot.val().frequency;
-    // var nextArrival = "";
-    // var minsAway = 0;
-
-    // console.log(trainName);
-    // console.log(trainDestination);
-    console.log("Initial Train " + initialTrain);
-    // console.log(trainFreq);
-
+    
+    
+    // Sets the initial train time to a year prior so it will be before any new time entered
     var initialTimeConverted = moment(initialTrain, "HH:mm").subtract(1, "years");
-    console.log("initial converted " + initialTimeConverted);
-
-
-    var currentTime = moment();
-    console.log("Current time: " + currentTime);
-
-
+    
+    // Difference between the converted time above and the current time
     var timeDiff = moment().diff(moment(initialTimeConverted),"minutes");
-    console.log("Time difference: " + timeDiff);
 
-
+    // Calculates the modulus so that the time remaining can be calculated
     timeModulus = timeDiff % trainFreq;
-    console.log("Time Modulus: " + timeModulus);
 
-
+    // Takes the frequency less the modulus (remainder) and gives us minutes away
     var minsAway = trainFreq - timeModulus;
-    console.log("Minutes away: " + minsAway);
 
-
+    // Calculation adds minutes away to the current time and gives us next arrival which is converted to standard 12hr format
     var incomingTrain = moment().add(minsAway, "minutes");
     var nextArrival = moment(incomingTrain).format("hh:mm A");
-    console.log(nextArrival);
 
-
-    // var convertedInitial = moment.unix(initialTrain).format("hh:mm A");
-    // console.log(convertedInitial);
 
 // Appends new trains to table in HTML
 $("tbody").append(`

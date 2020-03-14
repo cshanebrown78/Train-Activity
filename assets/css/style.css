@@ -25,8 +25,8 @@ table {
     margin-bottom: 10px;
 }
 
-td {
-    border-top: solid rgb(212, 210, 210) 1px;
+td {    
+    border-top: solid 1px #002145;
 }
 
 .card-header {
@@ -38,10 +38,18 @@ td {
 
 .card-body {
     background: gray;
+    color: #002145;
+}
+
+td {
     color: #FFFFFF;
 }
 
-.new-train-btn {
+label {
+    font-weight: 700;
+}
+
+.btn-primary {
     background: #002145;
     border: solid 1px silver;
 }
